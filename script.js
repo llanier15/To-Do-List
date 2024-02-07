@@ -1,7 +1,7 @@
 (() => {
   // Empty array until to-do items are added
   let toDoListArray = [];
-  // Ui variables
+  
   const form = document.querySelector(".form");
   const input = form.querySelector(".form__input");
   const ul = document.querySelector(".toDoList");
