@@ -1,60 +1,59 @@
 (() => {
   // Empty array until to-do items are added
   let toDoListArray = [];
-  // ui variables
+  // Ui variables
   const form = document.querySelector(".form");
   const input = form.querySelector(".form__input");
   const ul = document.querySelector(".toDoList");
 
-  // event listeners
   form.addEventListener('submit', e => {
-    // prevent page reload
+    // Prevent page from reloading
     e.preventDefault();
-    // give item a unique ID
+    // Give item a unique ID
     let itemId = String(Date.now());
-    // assign input value
+    // Assign input value
     let toDoItem = input.value;
-    //pass ID and item into functions
+    // Pass ID and item into functions
     addItemToDOM(itemId , toDoItem);
     addItemToArray(itemId, toDoItem);
-    // clear the input box.
+    // Clear the input box.
     input.value = '';
   });
 
   ul.addEventListener('click', e => {
     let id = e.target.getAttribute('data-id')
     if (!id) return 
-    //pass id through to functions
+    // Pass id through to functions
     removeItemFromDOM(id);
     removeItemFromArray(id);
   });
 
-  // functions
+  // Functions
   function addItemToDOM(itemId, toDoItem) {
-    // create a li
+    // Create a li
     const li = document.createElement('li')
     li.setAttribute("data-id", itemId);
-    // add toDoItem text to li
+    // Add toDoItem text to li
     li.innerText = toDoItem
-    // add li to the DOM
+    // Add li to the DOM
     ul.appendChild(li);
   }
 
   function addItemToArray(itemId, toDoItem) {
-    // add item to array as an object with an ID so we can find and delete it later
+    // Add item to array with an ID so we can delete it later
     toDoListArray.push({ itemId, toDoItem});
     console.log(toDoListArray)
   }
 
   function removeItemFromDOM(id) {
-    // get the list item by data ID
+    // Get the list item by data ID
     var li = document.querySelector('[data-id="' + id + '"]');
-    // remove list item
+    // Remove list item
     ul.removeChild(li);
   }
 
   function removeItemFromArray(id) {
-    // create a new toDoListArray with all li's that don't match the ID
+    // Create a new toDoListArray with all li's that don't match the ID
     toDoListArray = toDoListArray.filter(item => item.itemId !== id);
     console.log(toDoListArray);
   }
