@@ -1,5 +1,5 @@
 /*Importing Google font: Gochi Hand*/
-/*pink color code: #FDB0C0 */
+/*Pink color code: #FDB0C0 */
 @import url("https://fonts.googleapis.com/css?family=Gochi+Hand");
 body {
   background-color: #95C8D8;
@@ -129,4 +129,5 @@ body {
 }
 .toDoList li:hover {
   text-decoration: line-through wavy #FDB0C0;
+  cursor: pointer;
 }
